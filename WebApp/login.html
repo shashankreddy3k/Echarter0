@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup Form</title>
+    <style>
+        /* Hide the signup form initially */
+        #signup-form {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="login-form">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+
+    <form id="signup-form">
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" required><br><br>
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" required><br><br>
+
+        <label for="signup-email">Email:</label>
+        <input type="email" id="signup-email" name="email" required><br><br>
+
+        <label for="signup-password">Password:</label>
+        <input type="password" id="signup-password" name="password" required><br><br>
+
+        <input type="submit" value="Signup">
+    </form>
+
+    <button id="toggle-forms">Switch to Signup</button>
+
+    <div id="response"></div>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function (event) {
+            event.preventDefault(); 
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const data = {
+                email: email,
+                password: password
+            };
+            console.log(data)
+
+            fetch("https://lcsapi1.onrender.com/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({email: data.email, password:data.password})
+            })
+            .then(response => response.json())
+            .then(responseData => {
+                console.log(responseData)
+                if (responseData) {
+                    document.getElementById("response").innerHTML =`Welcome ${responseData.user.firstName}`;
+                } else {
+                    document.getElementById("response").innerHTML = "Login failed. Please try again.";
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("response").innerHTML = "An error occurred while processing your request.";
+            });
+        });
+
+        document.getElementById("signup-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById("first-name").value;
+            const lastName = document.getElementById("last-name").value;
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+
+            const data = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password
+            };
+
+            console.log(data);
+
+            fetch("https://lcsapi1.onrender.com/signup", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(responseData => {
+                console.log(responseData);
+                document.getElementById("response").innerHTML = "Signup successful. Please login.";
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("response").innerHTML = "An error occurred while processing your request.";
+            });
+        });
+
+        document.getElementById("toggle-forms").addEventListener("click", function () {
+            const loginForm = document.getElementById("login-form");
+            const signupForm = document.getElementById("signup-form");
+            const toggleButton = document.getElementById("toggle-forms");
+
+            if (loginForm.style.display === "none") {
+                loginForm.style.display = "block";
+                signupForm.style.display = "none";
+                toggleButton.textContent = "Switch to Signup";
+            } else {
+                loginForm.style.display = "none";
+                signupForm.style.display = "block";
+                toggleButton.textContent = "Switch to Login";
+            }
+        });
+    </script>
+</body>
+
+</html>

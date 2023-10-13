@@ -1,0 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.profile-container {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.profile-details p {
+    text-align: left;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="driver.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="YOUR-CLIENT-ID.apps.googleusercontent.com">
+    <script src="driver.js" defer></script>
+    <title>Driver Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Driver Login</h2>
+        <form id="loginForm" action="/login" method="post">
+            <input type="email" name="email" placeholder="Driver Email" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="button" class="login-btn" onclick="loginWithEmail()">Login</button>
+        </form>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div> 
+    </div>
+</body>
+</html>

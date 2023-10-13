@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echarter</title>
+    <link rel="stylesheet" href="app.css">
+    <style>
+        #additional-fields {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div id="logo">Echarter</div>
+    <nav>
+        <ul>
+            <li><a href="Company.html">Company</a></li>
+            <li class="dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-content">
+                    <a href="Service1.html">Travel & Tour</a>
+                    <a href="Service2.html">Airport Transportation</a>
+                    <a href="Service3.html">Wedding</a>
+                    <a href="Service4.html">Corporate/Private Functions</a>
+                    <a href="Service5.html">Community & Church Functions</a>
+                    <a href="Service6.html">School Functions & Events</a>
+                    <a href="Service7.html">Sporting Events</a>
+                    <a href="Service8.html">Out of Town Trips</a>
+                    <a href="Service9.html">Other Customized Charters</a>
+                    <a href="Service10.html">Contract Shuttle Services</a>
+                </div>
+            </li>
+            <li><a href="Driver.html">Driver</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="Blog.html">Blog</a></li>
+            <li><a href="Login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <form id="booking-form">
+        <label for="pickup-date">Pickup Date</label>
+        <input type="date" id="pickup-date" name="pickup-date" required>
+
+        <label for="pickup-time">Pickup Time</label>
+        <input type="time" id="pickup-time" name="pickup-time" required>
+
+        <label for="pickup-address">Pickup Address</label>
+        <input type="text" id="pickup-address" name="pickup-address" required>
+
+        <label for="service-option">Service Option</label>
+        <select id="service-option" name="service-option" required>
+            <option value="" disabled selected>Select a service</option>
+            <option value="option1">One Way</option>
+            <option value="option2">Round Trip</option>
+            <option value="option3">Multi Stop</option>
+            <option value="option4">Day Package</option>
+            <option value="option5">Customization</option>
+        </select>
+
+        <label for="dropoff-address">DropOff Address</label>
+        <input type="text" id="dropoff-address" name="dropoff-address" required>
+
+        <label for="special-notes">Special Notes</label>
+        <textarea id="special-notes" name="special-notes"></textarea>
+
+        <div id="additional-fields">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" name="full-name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone-number">Phone Number</label>
+            <input type="tel" id="phone-number" name="phone-number" required>
+
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company">
+
+
+            <label for="referral-source">How did you hear about us?</label>
+            <select id="referral-source" name="referral-source" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Online Search">Online Search</option>
+                <option value="Facebook">Facebook</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Referral">Referral</option>
+                <option value="other">Other</option>
+        </select>
+
+        <button type="submit" id="submit-with-login">Submit with Login</button>
+        <button type="submit" id="submit-without-login">Submit without Login</button>
+
+    </form>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
